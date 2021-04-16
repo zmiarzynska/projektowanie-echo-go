@@ -5,7 +5,7 @@ Aby uruchomić program główny - server.go - należy uruchomić w terminalu w j
 -> go run server.go 
 
 
-Wówczas na porcie 8000 (u mnie 8000 jest zmapowane na 11223 dostępne jest API do dodawania, usuwania, aktualizowania oraz pobierania obiektów "items" z bazy myItems.db
+Wówczas na porcie 8000 (u mnie 8000 jest zmapowane na 11223) dostępne jest API do dodawania, usuwania, aktualizowania oraz pobierania obiektów "items" z bazy myItems.db
 Obiekty składają się z ID oraz z Nazwy Name. Przy tworzeniu nowego obiektu "item" należy podać jedynie nazwę.
 Testowanie odbywa się z pomocą programu Postman
 Przykładowe body do createItem (POST) oraz updateItem (PUT)
