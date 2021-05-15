@@ -70,3 +70,5 @@ DELETE http://localhost:11223/items/1
 
 
 Po wykonaniu operacji item o danym ID nie jest już dostępny
+
+15.05 - Added Sonarcloud analysis
