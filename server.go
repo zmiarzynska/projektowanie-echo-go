@@ -192,17 +192,17 @@ func main() {
 	})
 	
 	s := getInstance()
- 	const item_id = "/items/:id"
+ 	const itemId = "/items/:id"
 	
 
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover()) 
 
-	e.GET(item_id, s.getItem)
-	e.PUT(item_id, s.updateItem)
+	e.GET(itemId, s.getItem)
+	e.PUT(itemId, s.updateItem)
 	e.POST("/items", s.createItem)
-	e.DELETE(item_id, s.deleteItem)
+	e.DELETE(itemId, s.deleteItem)
 	e.Server.Addr = ":8000"
 	e.Logger.Fatal(gracehttp.Serve(e.Server))
 
