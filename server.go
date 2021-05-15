@@ -120,14 +120,14 @@ func (s *singleton) deleteItem(c echo.Context) error {
 	var name string 
 	u := &item{
 		ID: seq }
-	requested_id := c.Param("id")
+	requestedId := c.Param("id")
 
 	if err := c.Bind(u); err != nil {
 		return err
 	}
 	query := "DELETE FROM items Where id = ?"
 	
-	err := s.db.QueryRow(query, requested_id).Scan(&id, &name)
+	err := s.db.QueryRow(query, requestedId).Scan(&id, &name)
 	if err != nil {
 		fmt.Println(err)
 	}
