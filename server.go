@@ -142,14 +142,14 @@ func (s *singleton) getItem(c echo.Context) error {
 	defer s.close()
 	var id int
 	var name string 
-	requested_id := c.Param("id")
+	requestedId := c.Param("id")
 	u := &item{
 		ID: seq }
 		
 	if err := c.Bind(u); err != nil {
 		return err
 	}
-	err := s.db.QueryRow("SELECT id, name FROM items WHERE id = ?", requested_id).Scan(&id, &name)
+	err := s.db.QueryRow("SELECT id, name FROM items WHERE id = ?", requestedId).Scan(&id, &name)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -163,8 +163,8 @@ func (s *singleton) updateItem(c echo.Context) error {
 	defer s.close()
 	var id int
 	var name string 
-	requested_id := c.Param("id")
-	str_to_int, err2:= strconv.Atoi(requested_id)
+	requestedId := c.Param("id")
+	str_to_int, err2:= strconv.Atoi(requestedId)
 	if err2 != nil {
 		return err2
 	}
@@ -174,7 +174,7 @@ func (s *singleton) updateItem(c echo.Context) error {
 	if err := c.Bind(u); err != nil {
 		return err
 	}
-	err := s.db.QueryRow("UPDATE items SET name=? WHERE id=?", u.Name,requested_id).Scan(&name,&id) // tu gdzies jest prroblem chyba
+	err := s.db.QueryRow("UPDATE items SET name=? WHERE id=?", u.Name,requestedId).Scan(&name,&id) // tu gdzies jest prroblem chyba
 	if err != nil {
 		fmt.Println(err)
 	}
