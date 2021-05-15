@@ -185,24 +185,24 @@ func (s *singleton) updateItem(c echo.Context) error {
 
 
 func main() {
-
+	
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Welcome to item database!")
 	})
 	
 	s := getInstance()
- 
+ 	const item_id = "/items/:id"
 	
 
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover()) 
 
-	e.GET("/items/:id", s.getItem)
-	e.PUT("/items/:id", s.updateItem)
+	e.GET(item_id, s.getItem)
+	e.PUT(item_id, s.updateItem)
 	e.POST("/items", s.createItem)
-	e.DELETE("/items/:id", s.deleteItem)
+	e.DELETE(item_id, s.deleteItem)
 	e.Server.Addr = ":8000"
 	e.Logger.Fatal(gracehttp.Serve(e.Server))
 
